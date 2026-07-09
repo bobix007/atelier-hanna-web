@@ -16,6 +16,10 @@
 /assets/*
   Cache-Control: public, max-age=0, must-revalidate
 
+# Vidéos : fichiers lourds, changent rarement — cache 1 jour
+/assets/video/*
+  Cache-Control: public, max-age=86400
+
 # Les pages HTML restent revalidées elles aussi
 /*.html
   Cache-Control: public, max-age=0, must-revalidate

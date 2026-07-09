@@ -335,7 +335,32 @@
     "Serti griffe quatre grains · chaîne intégrée": "Four-claw setting · integrated chain",
     "Anatomie d'une pièce · n°01": "Anatomy of a piece · no.01",
     "Le pavé impossible.": "The impossible pavé.",
+    "La géométrie précieuse.": "Precious geometry.",
+    "Le brief : une bague architecturale où pavé de diamants, lapis-lazuli et malachite s'assemblent en volumes géométriques — sans qu'aucun raccord ne soit visible à l'œil nu. Du gouaché encré à la pièce livrée, chaque étape ci-dessous est réelle : c'est la même bague.": "The brief: an architectural ring where diamond pavé, lapis lazuli and malachite meet in geometric volumes — with no join visible to the naked eye. From the inked gouaché to the delivered piece, every step below is real: it is the same ring.",
+    "01 · Le dessin encré": "01 · The inked drawing",
+    "02 · Le modèle travaillé": "02 · The worked model",
+    "03 · L'anneau en main": "03 · The ring in hand",
+    "04 · Le sertissage": "04 · The setting",
+    "05 · La pièce finie": "05 · The finished piece",
     "Le brief : une surface courbe intégralement pavée, sans qu'aucun grain ne soit visible à l'œil nu. 214 diamants, 9 calibres différents, une tolérance de pose au centième.": "The brief: a curved surface entirely pavé-set, with no bead visible to the naked eye. 214 diamonds, 9 different calibres, a setting tolerance to the hundredth.",
+    "Or rose 18 ct · pavé, lapis-lazuli, malachite": "18ct rose gold · pavé, lapis lazuli, malachite",
+    "Pendentifs à l'atelier · or jaune": "Pendants in the atelier · yellow gold",
+    "Jonc ouvert · pavé diamants sur or rose": "Open bangle · diamond pavé on rose gold",
+    "Anneau géométrique · texture grainée": "Geometric band · grained texture",
+    "Collier posé sur son gouaché": "Necklace resting on its gouaché",
+    "Bague architecturale · pierres dures": "Architectural ring · hard stones",
+    "Sertissage sous binoculaire · pièce en étau": "Setting under the microscope · piece in the vice",
+    "Reprise à la meule · or rose": "Rework at the wheel · rose gold",
+    "Diamants calibrés · tri à la main": "Calibrated diamonds · sorted by hand",
+    "La main derrière la pièce": "The hand behind the piece",
+    "Vapeur · le dernier éclat": "Steam · the final brilliance",
+    "Du modèle au métal": "From model to metal",
+    "Appairage des pierres à la brucelles.": "Matching stones with the tweezers.",
+    "Tri et calibrage des diamants.": "Sorting and calibrating diamonds.",
+    "Serti grain, pièce tenue en étau.": "Grain setting, piece held in the vice.",
+    "Pavé et pierres taillées sur or 18 ct.": "Pavé and cut stones on 18ct gold.",
+    "Pierres de couleur, calibrées en interne.": "Coloured gemstones, calibrated in-house.",
+    "Nettoyage vapeur avant contrôle final.": "Steam cleaning before final inspection.",
     "Ce que cette pièce prouve : lorsqu'un dessin semble impossible à produire, il est simplement en avance sur son atelier.": "What this piece proves: when a drawing seems impossible to produce, it is simply ahead of its atelier.",
     "La prochaine pièce de cette galerie": "The next piece in this gallery",
     "peut être la vôtre.": "could be yours.",
@@ -540,7 +565,16 @@
       list.classList.add("hovering");
       cm.classList.add("on");
       ph.className = "ph " + (li.getAttribute("data-tone") || "t-etabli");
-      lbl.textContent = li.getAttribute("data-label") || "";
+      // photo réelle si fournie via data-img, sinon libellé sur fond teinté
+      var img = ph.querySelector("img");
+      if (li.getAttribute("data-img")) {
+        if (!img) { img = document.createElement("img"); img.alt = ""; img.className = "real"; ph.appendChild(img); }
+        img.src = li.getAttribute("data-img");
+        if (lbl) lbl.style.display = "none";
+      } else {
+        if (img) img.remove();
+        if (lbl) { lbl.style.display = ""; lbl.textContent = li.getAttribute("data-label") || ""; }
+      }
     });
     list.addEventListener("mouseleave", function () {
       list.classList.remove("hovering");
