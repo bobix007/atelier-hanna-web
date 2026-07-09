@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Débuter un projet — Contact confidentiel | Atelier Hanna</title>
+<meta name="description" content="Racontez-nous votre projet de collection joaillière. Réponse personnelle sous 48 heures ouvrées, sous accord de confidentialité. Visites de l'atelier sur rendez-vous.">
+<meta name="robots" content="noindex,follow">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header scrolled" id="siteHeader">
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="brand" href="/">Atelier&nbsp;Hanna</a>
+    <ul class="nav-links">
+      <li><a href="/maison/">Maison</a></li>
+      <li><a href="/savoir-faire/">Savoir-Faire</a></li>
+      <li><a href="/processus/">Processus</a></li>
+      <li><a href="/private-label/">Private Label</a></li>
+      <li><a href="/creations/">Créations</a></li>
+      <li><a href="/journal/">Journal</a></li>
+    </ul>
+    <a class="cta-nav" href="/contact/" aria-current="page">Débuter un projet</a>
+    <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+<div class="mobile-menu">
+  <a href="/maison/">Maison</a><a href="/savoir-faire/">Savoir-Faire</a><a href="/processus/">Processus</a>
+  <a href="/private-label/">Private Label</a><a href="/expertise/">Expertise</a><a href="/creations/">Créations</a>
+  <a href="/journal/">Journal</a><a class="cta-mobile" href="/contact/">Débuter un projet</a>
+</div>
+
+<main>
+<div class="contact-layout">
+
+  <!-- COLONNE GAUCHE -->
+  <aside class="contact-aside grain">
+    <div class="band-bg metal-light" aria-hidden="true" style="opacity:.25"></div>
+    <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:32px">
+      <div>
+        <p class="eyebrow">Débuter un projet</p>
+        <h1 class="d2" style="margin-top:14px">Débutons.</h1>
+      </div>
+      <p>Racontez-nous votre projet en quelques lignes. Un membre de la Maison — jamais un robot, jamais un commercial — vous répond personnellement sous 48&nbsp;heures ouvrées.</p>
+      <p>Chaque échange est confidentiel. Un accord de confidentialité peut être signé avant tout envoi de documents.</p>
+      <hr class="hairline" style="border-color:var(--hair-light)">
+      <address>
+        <strong style="font-family:var(--display);font-size:20px;letter-spacing:.05em">Atelier Hanna</strong><br>
+        [Adresse de l'atelier]<br>
+        <a href="mailto:contact@atelierhanna.com" style="color:var(--or)">contact@atelierhanna.com</a><br>
+        [+00 0 00 00 00 00]<br>
+        <span class="small-caps" style="color:rgba(247,244,239,.5)">Visites de l'atelier sur rendez-vous.</span>
+      </address>
+    </div>
+  </aside>
+
+  <!-- COLONNE DROITE : FORMULAIRE -->
+  <div class="contact-main">
+    <!-- Pour activer l'envoi : renseignez action="https://formspree.io/f/VOTRE_ID"
+         (ou une Cloudflare Pages Function /api/contact). Sinon, une confirmation
+         de démonstration s'affiche côté client. cf. README. -->
+    <form id="contactForm" action="#" method="POST" novalidate>
+      <!-- honeypot anti-spam -->
+      <div class="hp" aria-hidden="true"><label>Ne pas remplir<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+
+      <div class="form-field">
+        <label for="f-nom">Votre nom</label>
+        <input type="text" id="f-nom" name="nom" autocomplete="name" required>
+        <span class="form-error">Il nous faut un nom pour vous répondre.</span>
+      </div>
+
+      <div class="form-field">
+        <label for="f-email">Votre e-mail</label>
+        <input type="email" id="f-email" name="email" autocomplete="email" required>
+        <span class="form-error">Il nous faut une adresse pour vous répondre.</span>
+      </div>
+
+      <div class="form-field">
+        <label for="f-marque">Votre marque ou projet <span style="text-transform:none;letter-spacing:0;color:var(--graphite)">(«&nbsp;en création&nbsp;» accepté)</span></label>
+        <input type="text" id="f-marque" name="marque" autocomplete="organization">
+      </div>
+
+      <div class="form-field">
+        <label for="f-profil">Vous êtes…</label>
+        <select id="f-profil" name="profil">
+          <option value="">Choisir…</option>
+          <option>Maison établie</option>
+          <option>Marque en lancement</option>
+          <option>Créateur indépendant</option>
+          <option>Maison de mode</option>
+          <option>Autre</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="f-projet">Votre projet en quelques mots</label>
+        <textarea id="f-projet" name="projet" placeholder="Une collection de 12 pièces en or 18 ct, lancement printemps prochain…"></textarea>
+      </div>
+
+      <div class="form-field">
+        <label for="f-etape">Où en êtes-vous&nbsp;?</label>
+        <select id="f-etape" name="etape">
+          <option value="">Choisir…</option>
+          <option>Idée</option>
+          <option>Dessins existants</option>
+          <option>Fichiers 3D prêts</option>
+          <option>Production à transférer</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn solid" style="margin-top:8px">Envoyer — réponse sous 48&nbsp;h</button>
+      <p class="form-note">Vos informations ne sont jamais partagées. Jamais.</p>
+    </form>
+
+    <!-- État de confirmation -->
+    <div class="form-confirm" id="formConfirm">
+      <p class="eyebrow">Message reçu</p>
+      <h2 class="d2" style="margin:14px 0 20px">Votre message<br>est entre bonnes mains.</h2>
+      <p class="lead">Nous vous répondons personnellement sous 48&nbsp;heures ouvrées. D'ici là, le Journal de l'Atelier vous est ouvert.</p>
+      <p style="margin-top:32px"><a class="link-more" href="/journal/">Lire le Journal</a></p>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid" style="padding-top:0">
+      <div><span class="brand-footer">Atelier&nbsp;Hanna</span><p>Haute façon joaillière<br>depuis 1961.</p></div>
+      <div><h4>La Maison</h4><ul><li><a href="/maison/">Notre histoire</a></li><li><a href="/savoir-faire/">Savoir-Faire</a></li><li><a href="/processus/">Le Processus</a></li><li><a href="/expertise/">Expertise &amp; Capacités</a></li></ul></div>
+      <div><h4>Collaborer</h4><ul><li><a href="/private-label/">Private Label</a></li><li><a href="/creations/">Créations</a></li><li><a href="/journal/">Journal</a></li><li><a href="/contact/">Débuter un projet</a></li></ul></div>
+      <div><h4>Confidentialité</h4><p>Toutes les demandes sont traitées sous accord de confidentialité.</p></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> Atelier Hanna — Tous droits réservés</span>
+      <span><a href="/mentions-legales/">Mentions légales</a> · <a href="/confidentialite/">Confidentialité</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>
