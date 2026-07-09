@@ -221,10 +221,11 @@ body:not(.dark-hero) .cta-nav:hover,.site-header.scrolled .cta-nav:hover{backgro
 /* ---------- Logo & emblème ----------
    PNG à fond transparent, marquage noir : invert(1) le passe en ivoire
    sur les contextes sombres (héros vidéo, footer). */
-.brand img{height:20px;width:auto;display:block;transition:filter .35s var(--ease)}
+.brand img{height:48px;width:auto;display:block;transition:filter .35s var(--ease),height .35s var(--ease)}
+.site-header.scrolled .brand img{height:38px}
 body.dark-hero .site-header:not(.scrolled):not(.menu-open) .brand img{filter:invert(1)}
 .hero-embleme{height:58px;width:auto;filter:invert(1);opacity:.9;display:block;margin-bottom:30px}
-.brand-footer img{height:22px;width:auto;display:block;filter:invert(1)}
+.brand-footer img{height:44px;width:auto;display:block;filter:invert(1)}
 
 /* ---------- Révélations au scroll ---------- */
 [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
