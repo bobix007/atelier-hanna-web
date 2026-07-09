@@ -120,7 +120,8 @@ body:not(.dark-hero) .cta-nav:hover,.site-header.scrolled .cta-nav:hover{backgro
 
 @media (max-width:1080px){
   .nav-links,.cta-nav{display:none}
-  .burger{display:block;margin-left:auto}
+  .burger{display:block;margin-left:20px}
+  .lang-toggle{margin-left:auto}
   .site-header.menu-open{background:var(--ivoire);color:var(--encre)}
   .mobile-menu{
     position:fixed;inset:0;background:var(--ivoire);z-index:90;
@@ -274,8 +275,13 @@ body:not(.dark-hero) .cta-nav:hover,.site-header.scrolled .cta-nav:hover{backgro
 @media (hover:none),(max-width:880px){.cursor-media{display:none}}
 
 /* ---------- Frise processus (accueil) ---------- */
-.hstrip{display:flex;gap:1px;overflow-x:auto;scroll-snap-type:x mandatory;background:var(--hair);border-block:1px solid var(--hair);-webkit-overflow-scrolling:touch}
-.hstrip::-webkit-scrollbar{height:0}
+.hstrip{display:flex;gap:1px;overflow-x:auto;scroll-snap-type:x mandatory;background:var(--hair);border-block:1px solid var(--hair);-webkit-overflow-scrolling:touch;cursor:grab;scrollbar-width:thin;scrollbar-color:var(--or) transparent;scroll-behavior:smooth}
+.hstrip.dragging{cursor:grabbing;scroll-behavior:auto;scroll-snap-type:none;user-select:none}
+.hstrip::-webkit-scrollbar{height:4px}
+.hstrip::-webkit-scrollbar-track{background:transparent}
+.hstrip::-webkit-scrollbar-thumb{background:var(--or)}
+.hstrip-hint{display:flex;align-items:center;gap:12px;margin-top:24px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--graphite)}
+.hstrip-hint .line{width:44px;height:1px;background:var(--or);display:inline-block}
 .hstrip .step{
   min-width:min(380px,82vw);scroll-snap-align:start;background:var(--ivoire);
   padding:clamp(36px,4vw,60px) clamp(26px,3vw,44px);display:flex;flex-direction:column;gap:16px;
@@ -505,6 +511,17 @@ body:not(.dark-hero) .cta-nav:hover,.site-header.scrolled .cta-nav:hover{backgro
 .cards3 h3{font-family:var(--display);font-weight:400;font-size:clamp(21px,2.2vw,28px);margin:0 0 14px}
 .cards3 p{color:var(--graphite);font-size:14.5px;margin:0}
 @media (max-width:880px){.cards3{grid-template-columns:1fr}}
+
+/* ---------- Header solide (contact, pages légales) ---------- */
+body.header-solid .site-header{background:var(--ivoire);box-shadow:0 1px 0 var(--hair);color:var(--encre);padding-block:14px}
+body.header-solid .site-header .cta-nav:hover{background:var(--encre);color:var(--ivoire);border-color:var(--encre)}
+
+/* ---------- Toggle de langue ---------- */
+.lang-toggle{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.16em;font-weight:500;font-family:var(--sans)}
+.lang-toggle button{background:none;border:0;cursor:pointer;color:inherit;opacity:.5;padding:8px 2px;font:inherit;letter-spacing:inherit;transition:opacity .3s var(--ease),color .3s var(--ease)}
+.lang-toggle button:hover{opacity:.85}
+.lang-toggle button.on{opacity:1;color:var(--or)}
+.lang-toggle .sep{opacity:.3}
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){
