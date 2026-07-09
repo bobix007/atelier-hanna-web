@@ -8,10 +8,14 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
-# Cache long pour les assets versionnés
+# IMPORTANT : les fichiers d'assets ont des noms NON versionnés
+# (style.css, main.js). Il ne faut donc JAMAIS les marquer "immutable" :
+# cela gèle l'ancienne version dans le cache du navigateur ET de l'edge
+# Cloudflare pendant un an, et les mises en ligne suivantes ne sont plus
+# prises en compte. On force une revalidation (ETag -> 304 si inchangé).
 /assets/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=0, must-revalidate
 
-# Les pages HTML restent revalidées
+# Les pages HTML restent revalidées elles aussi
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
