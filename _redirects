@@ -1,0 +1,10 @@
+# Cloudflare Pages — redirections
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Alias éventuels vers les URL canoniques
+/about/          /maison/            301
+/services/       /savoir-faire/      301
+/process/        /processus/         301
+/portfolio/      /creations/         301
+/blog/           /journal/           301
+/contact.html    /contact/           301

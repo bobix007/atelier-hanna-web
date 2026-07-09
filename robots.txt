@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /contact/
+Disallow: /mentions-legales/
+Disallow: /confidentialite/
+
+Sitemap: https://atelierhanna.com/sitemap.xml
