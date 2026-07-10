@@ -84,17 +84,17 @@ a:focus-visible,button:focus-visible{outline:1px solid var(--or);outline-offset:
   padding-block:26px;
 }
 .site-header .nav{
-  display:flex;align-items:center;gap:40px;
-  padding-inline:var(--pad);max-width:1560px;margin-inline:auto;
+  display:flex;align-items:center;gap:28px;
+  padding-inline:clamp(20px,2.5vw,44px);
 }
 .brand{
   font-family:var(--display);font-size:19px;letter-spacing:.32em;
   text-transform:uppercase;white-space:nowrap;font-weight:500;
 }
-.nav-links{display:flex;gap:32px;list-style:none;margin:0 auto;padding:0}
+.nav-links{display:flex;gap:clamp(18px,1.8vw,30px);list-style:none;margin:0 auto;padding:0}
 .nav-links a{
   font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
-  position:relative;padding-bottom:4px;
+  position:relative;padding-bottom:4px;white-space:nowrap;
 }
 .nav-links a::after{
   content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
@@ -118,7 +118,7 @@ body:not(.dark-hero) .cta-nav:hover,.site-header.scrolled .cta-nav:hover{backgro
 .menu-open .burger span:nth-child(2){opacity:0}
 .menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-@media (max-width:1080px){
+@media (max-width:1240px){
   .nav-links,.cta-nav{display:none}
   .burger{display:block;margin-left:20px}
   .lang-toggle{margin-left:auto}
@@ -140,7 +140,7 @@ body:not(.dark-hero) .cta-nav:hover,.site-header.scrolled .cta-nav:hover{backgro
     text-align:center;padding:16px;
   }
 }
-@media (min-width:1081px){.mobile-menu{display:none}}
+@media (min-width:1241px){.mobile-menu{display:none}}
 
 /* ---------- Héros ---------- */
 .hero{
@@ -221,8 +221,8 @@ body:not(.dark-hero) .cta-nav:hover,.site-header.scrolled .cta-nav:hover{backgro
 /* ---------- Logo & emblème ----------
    PNG à fond transparent, marquage noir : invert(1) le passe en ivoire
    sur les contextes sombres (héros vidéo, footer). */
-.brand img{height:clamp(84px,9vw,128px);width:auto;max-width:none;display:block;transition:filter .35s var(--ease),height .35s var(--ease)}
-.site-header.scrolled .brand img{height:clamp(64px,6.4vw,92px)}
+.brand img{height:clamp(64px,5.5vw,96px);width:auto;max-width:none;display:block;transition:filter .35s var(--ease),height .35s var(--ease)}
+.site-header.scrolled .brand img{height:clamp(48px,4.2vw,70px)}
 /* petit écran : le sélecteur de langue rejoint le menu burger
    pour laisser toute sa place au logo */
 @media (max-width:640px){
@@ -231,7 +231,7 @@ body:not(.dark-hero) .cta-nav:hover,.site-header.scrolled .cta-nav:hover{backgro
 }
 .mobile-menu .lang-toggle{color:var(--encre)}
 body.dark-hero .site-header:not(.scrolled):not(.menu-open) .brand img{filter:invert(1)}
-.brand-footer img{height:96px;width:auto;display:block;filter:invert(1)}
+.brand-footer img{height:80px;width:auto;display:block;filter:invert(1)}
 
 /* ---------- Révélations au scroll ---------- */
 [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
@@ -422,7 +422,7 @@ body.dark-hero .site-header:not(.scrolled):not(.menu-open) .brand img{filter:inv
 .gallery .h-s .ph{min-height:260px}
 .gallery .h-m .ph{min-height:380px}
 .gallery .h-l .ph{min-height:500px}
-@media (max-width:1080px){.gallery{columns:2}}
+@media (max-width:1240px){.gallery{columns:2}}
 @media (max-width:640px){.gallery{columns:1}}
 
 .filters{display:flex;gap:26px;flex-wrap:wrap;margin-bottom:clamp(36px,4vw,60px)}
