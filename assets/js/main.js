@@ -781,22 +781,30 @@
 
   // Injection du sélecteur de langue dans le header
   (function injectToggle() {
+    function makeToggle() {
+      var wrap = document.createElement("div");
+      wrap.className = "lang-toggle";
+      wrap.setAttribute("data-no-i18n", "");
+      wrap.setAttribute("role", "group");
+      wrap.setAttribute("aria-label", "Language / Langue");
+      wrap.innerHTML = '<button type="button" data-lang="fr" aria-pressed="true">FR</button>' +
+                       '<span class="sep" aria-hidden="true">/</span>' +
+                       '<button type="button" data-lang="en" aria-pressed="false">EN</button>';
+      wrap.querySelectorAll("button").forEach(function (b) {
+        toggleBtns.push(b);
+        b.addEventListener("click", function () { setLang(b.getAttribute("data-lang")); });
+      });
+      return wrap;
+    }
     var nav = document.querySelector(".site-header .nav");
-    if (!nav) return;
-    var wrap = document.createElement("div");
-    wrap.className = "lang-toggle";
-    wrap.setAttribute("data-no-i18n", "");
-    wrap.setAttribute("role", "group");
-    wrap.setAttribute("aria-label", "Language / Langue");
-    wrap.innerHTML = '<button type="button" data-lang="fr" aria-pressed="true">FR</button>' +
-                     '<span class="sep" aria-hidden="true">/</span>' +
-                     '<button type="button" data-lang="en" aria-pressed="false">EN</button>';
-    var cta = nav.querySelector(".cta-nav");
-    if (cta) nav.insertBefore(wrap, cta); else nav.appendChild(wrap);
-    wrap.querySelectorAll("button").forEach(function (b) {
-      toggleBtns.push(b);
-      b.addEventListener("click", function () { setLang(b.getAttribute("data-lang")); });
-    });
+    if (nav) {
+      var cta = nav.querySelector(".cta-nav");
+      var t = makeToggle();
+      if (cta) nav.insertBefore(t, cta); else nav.appendChild(t);
+    }
+    // doublon dans le menu mobile (le sélecteur du header est masqué ≤640px)
+    var mm = document.querySelector(".mobile-menu");
+    if (mm) mm.appendChild(makeToggle());
   })();
 
   // Langue initiale (persistée)
