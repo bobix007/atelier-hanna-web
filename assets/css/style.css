@@ -555,3 +555,7 @@ body.header-solid .site-header .cta-nav:hover{background:var(--encre);color:var(
   [data-reveal],.stagger>*{opacity:1;transform:none;clip-path:none}
   .ink-word{opacity:1}
 }
+
+
+.crafts-intro { padding-top: 0; }
+.crafts-video { width: 100%; height: auto; display: block; }
