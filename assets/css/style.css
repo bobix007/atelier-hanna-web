@@ -213,37 +213,44 @@ body:not(.dark-hero) .cta-nav:hover,.site-header.scrolled .cta-nav:hover{backgro
 .ph img.real,.ph video.real{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .ph:has(.real)::after{opacity:.22}
 
-/* ---------- Film d'ouverture (accueil) ----------
-   La vidéo contient ses propres textes : elle est affichée seule,
-   entière (jamais rognée), sous l'en-tête. Le titre du site
-   arrive dans la section .hero-intro juste en dessous.
+/* ---------- Héros vidéo de l'accueil ----------
+   Ordinateur : la vidéo emplit le fond ; le texte du site est posé dans
+   les coins bas pour laisser le centre libre (la vidéo y affiche ses
+   propres textes). Dégradés haut et bas : logo et titre restent lisibles
+   même sur les plans à fond blanc.
+   Mobile : la vidéo entière (16:9) sous l'en-tête, puis le texte.
    --header-h est mesuré par main.js (repli : 112px). */
-.hero-film{background:var(--velours);padding:var(--header-h,112px) 0 0}
-.hero-film-frame{
-  position:relative;margin-inline:auto;
-  width:min(100%,calc((100svh - var(--header-h,112px)) * 16 / 9));
-  aspect-ratio:16/9;background:#000;
+.hero-split .hero-media::after{
+  background:
+    linear-gradient(180deg,rgba(10,9,8,.62) 0,rgba(10,9,8,0) 22%),
+    radial-gradient(ellipse 62% 72% at 0% 100%,rgba(10,9,8,.94) 0,rgba(10,9,8,.7) 42%,rgba(10,9,8,0) 100%),
+    radial-gradient(ellipse 56% 70% at 100% 100%,rgba(10,9,8,.92) 0,rgba(10,9,8,.66) 42%,rgba(10,9,8,0) 100%),
+    linear-gradient(0deg,rgba(10,9,8,.4) 0,rgba(10,9,8,0) 34%);
 }
-.hero-film-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-/* en-tête opaque tant qu'il est au-dessus du film :
-   le logo ivoire ne se perd plus sur les plans à fond blanc */
-body.film-hero .site-header:not(.scrolled):not(.menu-open){background:var(--velours)}
-
-.hero-intro{position:relative;background:var(--velours);color:var(--ivoire);padding-block:clamp(72px,9vw,140px)}
-.hero-intro .hero-scroll{top:0;bottom:auto}
-.hero-intro-inner{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(32px,6vw,96px)}
-.hero-intro-title{flex:1 1 55%}
-.hero-intro-title .d1{font-size:clamp(40px,5.4vw,84px);margin:0}
-.hero-intro-side{flex:0 1 420px}
-.hero-intro .eyebrow{color:var(--or)}
-.hero-intro .lead{color:rgba(247,244,239,.78);margin:0}
-.hero-intro .hero-actions{margin-top:32px;gap:24px}
-.hero-intro .link-more{color:rgba(247,244,239,.85)}
+.hero-split-inner{width:100%;box-sizing:border-box;display:flex;justify-content:space-between;align-items:flex-end;gap:40px;max-width:none}
+/* largeurs limitées : le centre (≈ 30 % de l'écran) reste libre pour les
+   textes de la vidéo (années, compteur, logo) */
+/* le texte reste bas (sous ~70 % de la hauteur) : la ligne de texte de la
+   vidéo (« Craftsmanship… », « Expansion… ») passe vers 55-62 % */
+.hero.hero-split{padding-bottom:clamp(40px,4.5vw,64px)}
+.hero-split-title{max-width:32vw}
+.hero-split-title .d1{font-size:clamp(2rem,3.3vw,3.6rem);margin:0}
+.hero-split-side{max-width:27vw}
+.hero-split .eyebrow{color:#d9b97c;font-size:clamp(.75rem,.85vw,.85rem)}
+.hero-split .lead{font-size:clamp(.98rem,1.1vw,1.15rem);color:rgba(247,244,239,.92);margin:0}
+.hero-split .hero-actions{margin-top:18px;gap:22px}
+.hero-split .link-more{color:rgba(247,244,239,.92)}
+.hero-split h1,.hero-split .lead,.hero-split .eyebrow{text-shadow:0 1px 14px rgba(10,9,8,.6)}
+/* bouton pause à droite, à mi-hauteur : les coins bas portent le texte */
+.hero-split .video-toggle{top:50%;bottom:auto;right:clamp(16px,2vw,32px);transform:translateY(-50%)}
 @media(max-width:820px){
-  .hero-intro{padding-block:48px 72px}
-  .hero-intro-inner{flex-direction:column;align-items:flex-start;gap:24px}
-  .hero-intro-side{flex-basis:auto}
-  .hero-intro .hero-scroll{display:none}
+  .hero.hero-split{min-height:0;justify-content:flex-start;padding:var(--header-h,112px) 0 72px}
+  .hero-split .hero-media{position:relative;inset:auto;aspect-ratio:16/9}
+  .hero-split .hero-media::after{display:none}
+  .hero-split-inner{flex-direction:column;align-items:flex-start;gap:24px;margin-top:44px}
+  .hero-split-title,.hero-split-side{max-width:none;width:100%}
+  .hero-split .hero-scroll{display:none}
+  .hero-split .video-toggle{top:auto;bottom:12px;right:12px;transform:none}
 }
 
 /* ---------- Vidéos de fond (héros & bandes sombres) ---------- */
