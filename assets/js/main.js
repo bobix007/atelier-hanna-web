@@ -143,6 +143,18 @@
     /* ---- Savoir-Faire ---- */
     "Douze gestes, un seul toit.": "Twelve crafts, one roof.",
     "Les douze savoir-faire d'Atelier Hanna, de la direction artistique à la production finale": "Atelier Hanna's twelve crafts, from art direction to final production",
+    "Planche d'inspiration : archives, dessins anciens et matières": "Inspiration board: archives, antique drawings and materials",
+    "Croquis et pierres d'une collection en développement": "Sketches and stones for a collection in development",
+    "Dessin d'une bague au rubis sur tablette graphique": "A ruby ring being drawn on a graphics tablet",
+    "Dessin technique d'une bague tracé à la main": "A ring's technical drawing, traced by hand",
+    "Bague modélisée en 3D à l'écran, en filaire et en rendu": "A ring modelled in 3D on screen, as wireframe and render",
+    "Modèle de bague imprimé en 3D sur le plateau": "A 3D-printed ring model on the build plate",
+    "Prototype de bague brut tenu sur l'établi": "A raw ring prototype held at the bench",
+    "Coulée de métal en fusion dans la lingotière": "Molten metal poured into the mould",
+    "Sertissage d'une bague tenue en étau": "Setting a ring held in a vice",
+    "Polissage d'une bague à la meule": "Polishing a ring on the wheel",
+    "Contrôle d'un diamant à la loupe": "Inspecting a diamond through the loupe",
+    "Bague terminée, pavé de diamants et pierres fines": "Finished ring, diamond pavé and fine stones",
     "Tout ce qu'une pièce traverse": "Everything a piece passes through",
     "avant de porter votre nom.": "before it bears your name.",
     "De la première intuition au contrôle final, chaque étape est réalisée dans nos murs, par nos mains. Aucune sous-traitance, aucune dilution : une seule chaîne de responsabilité, du croquis à l'écrin.": "From the first intuition to the final inspection, every step is carried out within our walls, by our hands. No outsourcing, no dilution: a single chain of responsibility, from sketch to case.",
@@ -506,13 +518,56 @@
     });
   }
 
+  /* ---------- Vidéos différées (video[data-lazy]) ----------
+     La vidéo n'est téléchargée qu'à l'approche de l'écran, joue quand
+     elle est visible et se met en pause hors écran. Avec
+     « réduire les animations », seule l'image d'aperçu s'affiche. */
+  var lazyVideos = document.querySelectorAll("video[data-lazy]");
+  if (lazyVideos.length) {
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) {
+          if (!v.dataset.loaded) {
+            v.querySelectorAll("source[data-src]").forEach(function (s) { s.src = s.dataset.src; });
+            v.dataset.loaded = "1";
+            v.load();
+          }
+          if (!reduced) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        } else if (v.dataset.loaded) {
+          v.pause();
+        }
+      });
+    }, { rootMargin: "300px 0px" });
+    lazyVideos.forEach(function (v) { vio.observe(v); });
+  }
+
   /* ---------- Révélations au scroll ---------- */
+  // Un élément « rideau » (data-reveal="clip") part entièrement masqué par
+  // clip-path : Chrome le considère alors à 0 % visible et ne le révélait
+  // jamais. On observe donc son parent à sa place.
+  var revealSelf = new Set();
+  var revealViaParent = new Map();
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
-      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      if (!e.isIntersecting) return;
+      var t = e.target;
+      if (revealSelf.has(t)) t.classList.add("in");
+      (revealViaParent.get(t) || []).forEach(function (c) { c.classList.add("in"); });
+      io.unobserve(t);
     });
   }, { threshold: 0.18, rootMargin: "0px 0px -6% 0px" });
-  document.querySelectorAll("[data-reveal],.stagger,.timeline,.notfound-list li").forEach(function (el) { io.observe(el); });
+  document.querySelectorAll("[data-reveal],.stagger,.timeline,.notfound-list li").forEach(function (el) {
+    var target = el;
+    if (el.getAttribute("data-reveal") === "clip" && el.parentElement) {
+      target = el.parentElement;
+      if (!revealViaParent.has(target)) revealViaParent.set(target, []);
+      revealViaParent.get(target).push(el);
+    } else {
+      revealSelf.add(el);
+    }
+    io.observe(target);
+  });
 
   /* ---------- Compteurs ---------- */
   function animateCount(el) {
