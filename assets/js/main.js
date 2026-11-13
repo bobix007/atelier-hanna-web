@@ -140,6 +140,8 @@
     "Prendre rendez-vous": "Request an appointment",
 
     /* ---- Savoir-Faire ---- */
+    "Douze gestes, un seul toit.": "Twelve crafts, one roof.",
+    "Les douze savoir-faire d'Atelier Hanna, de la direction artistique à la production finale": "Atelier Hanna's twelve crafts, from art direction to final production",
     "Tout ce qu'une pièce traverse": "Everything a piece passes through",
     "avant de porter votre nom.": "before it bears your name.",
     "De la première intuition au contrôle final, chaque étape est réalisée dans nos murs, par nos mains. Aucune sous-traitance, aucune dilution : une seule chaîne de responsabilité, du croquis à l'écrin.": "From the first intuition to the final inspection, every step is carried out within our walls, by our hands. No outsourcing, no dilution: a single chain of responsibility, from sketch to case.",
@@ -811,4 +813,5 @@
   var saved = "fr";
   try { saved = localStorage.getItem("ah_lang") || "fr"; } catch (e) {}
   setLang(saved === "en" ? "en" : "fr");
+
 })();

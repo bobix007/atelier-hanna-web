@@ -38,7 +38,7 @@
 
 <main>
 
-<section class="hero editorial">
+<section class="hero editorial hero-compact">
   <div class="container">
     <p class="eyebrow" data-reveal>Savoir-Faire</p>
     <h1 class="d1" data-reveal style="transition-delay:.15s">Tout ce qu'une pièce traverse<br>avant de porter votre nom.</h1>
@@ -48,10 +48,16 @@
 
 <section class="section crafts-intro">
   <div class="container">
-    <video class="crafts-video" autoplay muted loop playsinline preload="metadata"
-           poster="/assets/img/twelve-crafts-poster.jpg">
-      <source src="/assets/video/twelve-crafts.mp4" type="video/mp4">
-    </video>
+    <div class="crafts-head" data-reveal>
+      <h2 class="d3">Douze gestes, un seul toit.</h2>
+    </div>
+    <figure class="crafts-frame">
+      <video class="crafts-video" autoplay muted loop playsinline preload="metadata"
+             poster="/assets/img/twelve-crafts-poster.jpg"
+             aria-label="Les douze savoir-faire d'Atelier Hanna, de la direction artistique à la production finale">
+        <source src="/assets/video/twelve-crafts.mp4" type="video/mp4">
+      </video>
+    </figure>
   </div>
 </section>
 
@@ -70,7 +76,11 @@
     </div>
 
     <div class="alt">
-      <div class="alt-media" data-reveal="clip"><div class="ph t-papier tall"><img class="real" src="/assets/img/gouache-collier.jpg" alt="Collier posé sur son gouaché" loading="lazy"></div></div>
+      <div class="alt-media" data-reveal="clip"><div class="ph t-papier tall">
+        <video class="real" autoplay muted loop playsinline preload="metadata" poster="/assets/img/gouache-collier.jpg" aria-label="Collier posé sur son gouaché">
+          <source src="/assets/video/test.mp4" type="video/mp4">
+        </video>
+      </div></div>
       <div class="txt" data-reveal>
         <h3 class="d3">Direction artistique</h3>
         <p>Nous ne dessinons pas pour nous. Nous dessinons pour votre marque&nbsp;: son histoire, ses codes, sa cliente. Nos directeurs artistiques traduisent votre univers en intentions joaillières — moodboards, lignes directrices, territoires de collection.</p>
