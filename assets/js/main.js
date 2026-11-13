@@ -515,7 +515,7 @@
 
   /* Film d'ouverture : la vidéo commence sous l'en-tête.
      On mesure l'en-tête dans son état « haut de page » (non réduit). */
-  if (header && document.querySelector(".hero-film")) {
+  if (header && document.querySelector(".hero-split")) {
     var setHeaderH = function () {
       if (header.classList.contains("scrolled") || header.classList.contains("menu-open")) return;
       document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");

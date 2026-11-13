@@ -14,14 +14,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap"></noscript>
-<link rel="stylesheet" href="/assets/css/style.css?v=8">
+<link rel="stylesheet" href="/assets/css/style.css?v=9">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Atelier Hanna",
 "description":"Private label fine jewelry manufacturer — design, CAD, prototyping, setting and production under one roof since 1961.",
 "foundingDate":"1961","slogan":"Nous fabriquons. Vous signez.","url":"https://atelierhanna.com"}
 </script>
 </head>
-<body class="dark-hero film-hero">
+<body class="dark-hero">
 
 <header class="site-header" id="siteHeader">
   <nav class="nav" aria-label="Navigation principale">
@@ -53,10 +53,10 @@
 <main>
 
 <!-- ============ HÉRO ============ -->
-<!-- Film d'ouverture : la vidéo est seule à l'écran (elle contient ses
-     propres textes), le titre du site arrive juste en dessous. -->
-<section class="hero-film">
-  <div class="hero-film-frame">
+<!-- Vidéo en fond ; le texte du site est posé dans les coins bas pour
+     laisser le centre libre (la vidéo y affiche ses propres textes). -->
+<section class="hero hero-split grain">
+  <div class="hero-media">
     <video data-pausable autoplay muted loop playsinline preload="metadata" poster="/assets/img/histoire-hanna-poster.jpg" aria-label="L’histoire d’Atelier Hanna, de 1961 à aujourd’hui">
       <!-- Le navigateur prend la première source qu'il sait lire :
            - mobile/tablette (≤ 820 px) : 720p, plus léger ;
@@ -69,16 +69,12 @@
       <source src="/assets/video/histoire-hanna-1080-h264.mp4" type="video/mp4">
     </video>
   </div>
-</section>
-
-<section class="hero-intro grain">
-  <div class="hero-scroll" aria-hidden="true"></div>
-  <div class="container hero-intro-inner">
-    <div class="hero-intro-title">
+  <div class="container hero-split-inner">
+    <div class="hero-split-title">
       <p class="eyebrow" data-reveal>Haute façon joaillière · Depuis 1961</p>
       <h1 class="d1" data-reveal style="transition-delay:.15s">La main derrière<br>les grandes marques.</h1>
     </div>
-    <div class="hero-intro-side">
+    <div class="hero-split-side">
       <p class="lead" data-reveal style="transition-delay:.3s">Atelier de joaillerie private label. Trois générations façonnent, en&nbsp;toute confidentialité, les collections de maisons du monde entier.</p>
       <div class="hero-actions" data-reveal style="transition-delay:.45s">
         <a class="btn light" href="/contact/">Débuter un projet</a>
@@ -86,6 +82,7 @@
       </div>
     </div>
   </div>
+  <div class="hero-scroll" aria-hidden="true"></div>
 </section>
 
 <!-- ============ MANIFESTE ============ -->
@@ -278,6 +275,6 @@
   </div>
 </footer>
 
-<script src="/assets/js/main.js?v=8" defer></script>
+<script src="/assets/js/main.js?v=9" defer></script>
 </body>
 </html>
