@@ -36,6 +36,7 @@
     "les grandes marques.": "the great names.",
     "Atelier de joaillerie private label. Trois générations façonnent, en toute confidentialité, les collections de maisons du monde entier.": "A private label jewellery atelier. Three generations craft, in complete confidentiality, the collections of houses the world over.",
     "Découvrir la Maison": "Discover the Maison",
+    "L’histoire d’Atelier Hanna, de 1961 à aujourd’hui": "The story of Atelier Hanna, from 1961 to today",
     "Les plus belles créations du monde ne naissent pas dans les boutiques où on les découvre. Elles naissent dans des ateliers que personne ne connaît. Le nôtre a soixante-cinq ans.": "The world's finest creations are not born in the boutiques where they are discovered. They are born in ateliers no one knows. Ours is sixty-five years old.",
     "Lire notre histoire": "Read our story",
     "ans de métier": "years of craft",
@@ -480,6 +481,19 @@
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+
+  /* Film d'ouverture : la vidéo commence sous l'en-tête.
+     On mesure l'en-tête dans son état « haut de page » (non réduit). */
+  if (header && document.querySelector(".hero-film")) {
+    var setHeaderH = function () {
+      if (header.classList.contains("scrolled") || header.classList.contains("menu-open")) return;
+      document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");
+    };
+    setHeaderH();
+    window.addEventListener("resize", setHeaderH);
+    window.addEventListener("load", setHeaderH);
+    header.addEventListener("transitionend", setHeaderH);
+  }
 
   /* ---------- Menu mobile ---------- */
   var burger = document.querySelector(".burger");
