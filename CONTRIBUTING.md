@@ -57,7 +57,8 @@ functions/api/contact.js   Contact-form email function (inactive until a key is 
 </figure>
 ```
 `h-s` / `h-m` / `h-l` sets the tile height; `data-cat` is one of
-`bagues | colliers | bracelets | exception` (used by the filter buttons).
+`bagues | bracelets | boucles` (used by the filter buttons). Adding a new category
+(e.g. `colliers`) also needs its `<button data-filter="…">` in the `.filters` bar.
 **The caption needs an English entry in the dictionary — see §5.**
 
 ## 4. Adding videos
@@ -78,6 +79,18 @@ Hard limits: Cloudflare Pages refuses files **over 25 MiB** (and 20,000 files to
     <source src="/assets/video/clip.mp4" type="video/mp4">
   </video>
   ```
+- Short animations further down a page (Savoir-faire gestes, Créations): use the
+  **lazy** pattern — the video only downloads when it scrolls into view, plays while
+  visible and pauses off-screen (handled by `main.js`):
+  ```html
+  <video class="real" data-lazy muted loop playsinline preload="none"
+         poster="/assets/img/gestes/geste-09-sertissage.jpg" aria-label="French description">
+    <source data-src="/assets/video/gestes/geste-09-sertissage.mp4" type="video/mp4">
+  </video>
+  ```
+  The `aria-label` needs an English entry in the dictionary (§5).
+- Long videos (> 5 s, autoplay): add `data-pausable` on the `<video>` — `main.js` adds a
+  play/pause button (accessibility requirement).
 - Anything genuinely large (full films): host externally and embed; don't commit it.
 
 ## 5. ⚠️ Translations — every new text needs a dictionary entry
@@ -97,12 +110,12 @@ When you add or change ANY visible text (headings, paragraphs, captions, buttons
 
 ## 6. ⚠️ Cache-buster — when you touch `style.css` or `main.js`
 
-Every page references `style.css?v=4` and `main.js?v=4`. If you edit **either file**, bump the version in **all 12 HTML files**, or visitors keep their cached copy:
+Every page references `style.css?v=N` and `main.js?v=N`. If you edit **either file**, bump the version in **all 12 HTML files**, or visitors keep their cached copy. Check the current number, then replace it everywhere (example: 8 → 9):
 
 ```bash
-grep -rl 'style.css?v=4' --include='*.html' . | xargs sed -i '' 's/style.css?v=4/style.css?v=5/; s/main.js?v=4/main.js?v=5/'
+grep -o 'v=[0-9]*' index.html | sort -u
+grep -rl 'style.css?v=8' --include='*.html' . | xargs sed -i '' 's/style.css?v=8/style.css?v=9/; s/main.js?v=8/main.js?v=9/'
 ```
-(Adjust the numbers to current → next. Check the current one with `grep -o 'v=[0-9]*' index.html`.)
 
 Editing HTML or adding images/videos does **not** require a bump.
 

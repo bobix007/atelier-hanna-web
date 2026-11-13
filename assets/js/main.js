@@ -29,6 +29,9 @@
     "Toutes les demandes sont traitées sous accord de confidentialité.": "All enquiries are handled under a confidentiality agreement.",
     "Atelier Hanna — Tous droits réservés": "Atelier Hanna — All rights reserved",
     "Mentions légales": "Legal notice",
+    "Navigation principale": "Main navigation",
+    "Lecture / pause de la vidéo": "Play / pause the video",
+    "La bague géométrique, du dessin à la pièce finie": "The geometric ring, from drawing to finished piece",
 
     /* ---- Accueil ---- */
     "Haute façon joaillière · Depuis 1961": "Fine Jewellery Craftsmanship · Since 1961",
@@ -706,11 +709,36 @@
       filters.querySelectorAll("button").forEach(function (b) { b.classList.remove("on"); });
       btn.classList.add("on");
       var cat = btn.getAttribute("data-filter");
-      document.querySelectorAll(".gallery figure").forEach(function (f) {
+      // seules les pièces classées (data-cat) sont filtrées : l'étude de cas reste visible
+      document.querySelectorAll(".gallery figure[data-cat]").forEach(function (f) {
         f.style.display = (cat === "all" || f.getAttribute("data-cat") === cat) ? "" : "none";
       });
     });
   }
+
+  /* ---------- Bouton lecture / pause des longues vidéos (video[data-pausable]) ----------
+     Obligatoire pour l'accessibilité (contenu animé de plus de 5 s).
+     Avec « réduire les animations », la vidéo démarre en pause. */
+  document.querySelectorAll("video[data-pausable]").forEach(function (v) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "video-toggle";
+    btn.setAttribute("aria-label", "Lecture / pause de la vidéo");
+    function sync() { btn.setAttribute("aria-pressed", v.paused ? "true" : "false"); }
+    btn.addEventListener("click", function () {
+      if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else { v.pause(); }
+    });
+    v.addEventListener("play", sync);
+    v.addEventListener("pause", sync);
+    if (reduced) { v.removeAttribute("autoplay"); v.pause(); }
+    sync();
+    v.parentElement.appendChild(btn);
+  });
+
+  /* ---------- Menu mobile : page courante ---------- */
+  document.querySelectorAll(".mobile-menu a").forEach(function (a) {
+    if (a.getAttribute("href") === location.pathname) a.setAttribute("aria-current", "page");
+  });
 
   /* ---------- Frise horizontale : drag + molette (accueil) ---------- */
   document.querySelectorAll(".hstrip").forEach(function (strip) {

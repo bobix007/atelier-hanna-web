@@ -626,3 +626,24 @@ body.header-solid .site-header .cta-nav:hover{background:var(--encre);color:var(
   /* filtres : moins d'espace pour tenir sur une ligne quand c'est possible */
   .filters{gap:12px 20px}
 }
+
+/* ---------- Bouton lecture / pause (vidéos longues) ---------- */
+.video-toggle{
+  position:absolute;right:14px;bottom:14px;z-index:4;width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(247,244,239,.55);background:rgba(10,9,8,.45);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:4px;padding:0;
+  opacity:.7;transition:opacity .3s var(--ease)
+}
+.video-toggle:hover,.video-toggle:focus-visible{opacity:1}
+.video-toggle::before,.video-toggle::after{content:"";width:3px;height:12px;background:var(--ivoire)}
+.video-toggle[aria-pressed="true"]::before{width:0;height:0;margin-left:3px;background:none;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent var(--ivoire)}
+.video-toggle[aria-pressed="true"]::after{display:none}
+
+/* ---------- Expertise : visuels des cartes « Les outils du geste » ---------- */
+.cards3 .card-media{min-height:0;aspect-ratio:16/9;margin-bottom:26px}
+
+/* ---------- Menu mobile fermé : retiré du clavier et des lecteurs d'écran ---------- */
+@media (max-width:1240px){
+  .mobile-menu{visibility:hidden;transition:opacity .35s var(--ease),visibility 0s linear .35s}
+  .menu-open ~ .mobile-menu,body.menu-open .mobile-menu{visibility:visible;transition:opacity .35s var(--ease),visibility 0s}
+}

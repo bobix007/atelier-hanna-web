@@ -1,7 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /contact/
-Disallow: /mentions-legales/
-Disallow: /confidentialite/
+
+# Pas de « Disallow » pour /contact/, /mentions-legales/, /confidentialite/ :
+# ces pages portent déjà <meta name="robots" content="noindex">, et Google
+# doit pouvoir les lire pour respecter cette consigne.
 
 Sitemap: https://atelierhanna.com/sitemap.xml
