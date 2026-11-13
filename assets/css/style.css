@@ -647,3 +647,15 @@ body.header-solid .site-header .cta-nav:hover{background:var(--encre);color:var(
   .mobile-menu{visibility:hidden;transition:opacity .35s var(--ease),visibility 0s linear .35s}
   .menu-open ~ .mobile-menu,body.menu-open .mobile-menu{visibility:visible;transition:opacity .35s var(--ease),visibility 0s}
 }
+
+/* ---------- Menu mobile ouvert : liens sous l'en-tête ----------
+   Avant : liens centrés sur toute la hauteur → « Maison » passait sous
+   l'en-tête. Désormais le menu commence sous l'en-tête (--menu-top, mesuré
+   par main.js) et défile si l'écran est petit. */
+@media (max-width:1240px){
+  .mobile-menu{justify-content:flex-start;padding-top:calc(var(--menu-top,116px) + 12px);padding-bottom:40px;overflow-y:auto;overscroll-behavior:contain}
+}
+@media (max-width:1240px) and (max-height:720px){
+  .mobile-menu a{font-size:24px;padding:7px 0}
+  .mobile-menu .cta-mobile{margin-top:18px;padding:13px}
+}

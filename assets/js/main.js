@@ -531,6 +531,9 @@
   if (burger) {
     burger.addEventListener("click", function () {
       var open = document.body.classList.toggle("menu-open");
+      // le menu commence sous l'en-tête (qui reste affiché par-dessus)
+      var mm = document.querySelector(".mobile-menu");
+      if (open && mm) mm.style.setProperty("--menu-top", header.offsetHeight + "px");
       header.classList.toggle("menu-open", open);
       burger.setAttribute("aria-expanded", open ? "true" : "false");
       document.body.style.overflow = open ? "hidden" : "";
