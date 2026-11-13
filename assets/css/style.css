@@ -602,3 +602,27 @@ body.header-solid .site-header .cta-nav:hover{background:var(--encre);color:var(
 .crafts-video { width: 100%; height: auto; aspect-ratio:1080/602; object-fit:cover; display: block; }
 .ph video.real{width:100%;height:100%;object-fit:cover;display:block}
 @media(max-width:640px){.crafts-frame{margin-inline:calc(var(--pad,24px) * -1)}}
+
+/* ---------- Créations : pièces en vedette ----------
+   Animations en grand, au format de la vidéo (16:9) : le bijou
+   reste entier sur tous les écrans, sans recadrage. */
+.feature{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(36px,5vw,90px);align-items:center;margin-bottom:clamp(70px,8vw,130px)}
+.feature:last-child{margin-bottom:0}
+.feature.flip{grid-template-columns:1fr 1.5fr}
+.feature.flip .feature-media{order:2}
+.feature-media .ph{min-height:0;aspect-ratio:16/9}
+.feature h3{margin:0 0 18px}
+.feature .txt p{color:var(--graphite)}
+.feature .txt .feature-details{margin-top:22px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--or);font-weight:500}
+@media (max-width:880px){.feature,.feature.flip{grid-template-columns:1fr}.feature.flip .feature-media{order:0}}
+
+/* ---------- Créations : étapes de l'étude de cas ----------
+   5 colonnes sur grand écran, moins sur les petits (avant : 5 colonnes
+   partout, illisible sur mobile). */
+.gallery.gallery-steps{columns:5}
+@media (max-width:1240px){.gallery.gallery-steps{columns:3}}
+@media (max-width:640px){
+  .gallery.gallery-steps{columns:2}
+  /* filtres : moins d'espace pour tenir sur une ligne quand c'est possible */
+  .filters{gap:12px 20px}
+}
